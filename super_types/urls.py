@@ -1,7 +1,6 @@
-# from django.urls import path
-# from . import views
+from django.urls import path
+from . import views
 
-# urlpatterns = [
-#     path('', views._list),
-#     path('<int:pk>/', views._detail),
-# ]
+urlpatterns = [
+    path('', views.super_types_list),
+]
