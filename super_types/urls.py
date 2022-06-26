@@ -1,7 +1,7 @@
-from django.urls import path
-from . import views
+# from django.urls import path
+# from . import views
 
-urlpatterns = [
-    path('', views.cars_list),
-    path('<int:pk>/', views.car_detail),
-]
+# urlpatterns = [
+#     path('', views._list),
+#     path('<int:pk>/', views._detail),
+# ]
