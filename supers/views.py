@@ -20,6 +20,21 @@ def supers_list(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+@api_view(['GET'])
+def supers_and_types(request):
+    supers = Super.objects.all()
+    heroes = supers.filter(super_type__type='Hero')
+    villains = supers.filter(super_type__type='Villain')
+
+    heroes_serializer = SuperSerializer(heroes, many=True)
+    villains_serializer = SuperSerializer(villains, many=True)
+
+    custom_response_dict = {
+        'Heroes': heroes_serializer.data,
+        'Villains': villains_serializer.data
+    }
+    return Response(custom_response_dict)
+
 @api_view(['GET', 'PUT', 'DELETE'])
 def supers_detail(request, pk):
     super = get_object_or_404(Super, pk=pk)
